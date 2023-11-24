@@ -1,0 +1,15 @@
+{
+  "id": "HelpMate",
+  "name": "Obsidian42 - HelpMate",
+  "version": "0.1.0",
+  "minAppVersion": "1.4.16",
+  "description": "Integrating Help Systems into the Obsidian UI.",
+  "author": "TfTHacker",
+  "authorUrl": "https://github.com/TfTHacker/HelpMate",
+  "helpUrl": "https://tfthacker.com/HelpMate",
+  "isDesktopOnly": false,
+  "fundingUrl": {
+    "Buy Me a Coffee": "https://bit.ly/o42-kofi",
+    "Vist my site": "https://tfthacker.com"
+  }
+}

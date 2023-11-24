@@ -1,0 +1,13 @@
+# vscode
+@updates.md
+
+# npm
+node_modules
+package-lock.json
+
+# build
+build
+*.js.map
+
+# other
+**/.DS_Store
