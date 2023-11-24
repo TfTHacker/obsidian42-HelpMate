@@ -3,7 +3,7 @@ import type { Setting } from 'obsidian';
 
 declare global {
   interface Window {
-    helpMateAPI: HelpMateAPI;
+    helpMateAPI?: HelpMateAPI;
   }
 }
 
