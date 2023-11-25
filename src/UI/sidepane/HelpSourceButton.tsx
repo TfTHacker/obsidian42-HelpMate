@@ -59,7 +59,7 @@ const HelpSourceButton: FunctionComponent<HelpSourceButtonProps> = ({
         </svg>
       </button>
       {isOpen && (
-        <ul className="hm-source-button-dropdown-menu">
+        <ul className="hm-source-button-dropdown-menu hm-button-dropdown-menu">
           {helpUrls.map((url, index) => (
             <li
               key={index}

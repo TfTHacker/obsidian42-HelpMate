@@ -30,9 +30,11 @@ export function createCodeBlock(
       case 'height':
         controlHeight = parseInt(value);
         break;
-      default:
-        // key = toolbar
+      case 'toolbar':
         controlToolbar = value.toLowerCase() === 'true';
+        break;
+      default:
+        // do nothing
         break;
     }
   });
