@@ -32,7 +32,6 @@ const HelpMoreButton: FunctionComponent<HelpMoreButtonProps> = ({
         const randomInt = Math.floor(Math.random() * (10000 - 1000 + 1)) + 100;
         const fileName = `codeblock ${randomInt}.md`;
         await plugin.app.vault.create(fileName, newFile).then(async (file) => {
-          console.log(file);
           await plugin.app.workspace.getLeaf().openFile(file);
         });
       },
@@ -50,8 +49,6 @@ const HelpMoreButton: FunctionComponent<HelpMoreButtonProps> = ({
 
   const handleOptionClick = (index: number) => {
     setIsOpen(false);
-    // setSelectedUrl(helpUrls[index].url);
-    console.log('HelpMoreButton: handleOptionClick', commands[index]);
     commands[index].command();
   };
 
