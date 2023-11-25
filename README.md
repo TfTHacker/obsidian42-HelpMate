@@ -8,4 +8,4 @@ https://tfthacker.com/HelpMate
 
 # Installation
 
-Use the Obsidian BRAT plugin to install this plugin.
+Use the Obsidian [BRAT](https://obsidian.md/plugins?id=obsidian42-brat) plugin to install this plugin.
