@@ -1,6 +1,6 @@
 # HelpMate
 
-This plugin brings help sites right into the UI of Obsidian.
+A plugin that adds a sidepane to Obsidian to view help sites for the plugins and themes you have installed.
 
 # More Information
 
