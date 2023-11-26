@@ -25,7 +25,7 @@ export const isValidUrl = (url: string): boolean => {
 
 export const getPluginHelpList = (plugin: HelpMatePlugin): HelpForPlugin[] => {
   const initialHelpList: HelpForPlugin[] = Object.values(plugin.app.plugins.manifests)
-    .filter((p: PluginManifest) => p.helpUrl)
+    .filter((p: PluginManifest) => p.helpUrl && p.id !== plugin.APP_ID)
     .map((p: PluginManifest) => ({ id: p.id, name: p.name, url: p.helpUrl ?? '' }));
 
   const customPluginList = plugin.settings.userResources.split('\n');
@@ -94,7 +94,7 @@ export const getPluginHelpList = (plugin: HelpMatePlugin): HelpForPlugin[] => {
     sortedHelpForPluginList.push({
       id: 'helpmate',
       name: 'HelpMate Help',
-      url: 'https://tfthacker.com/helpmate',
+      url: 'https://tfthacker.com/HelpMate',
     });
 
   return sortedHelpForPluginList;
