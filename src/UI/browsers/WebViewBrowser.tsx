@@ -162,8 +162,14 @@ const WebViewBrowser = ({
           <HelpMoreButton currentUrl={url} plugin={plugin} />
         </div>
       )}
+
       {/* @ts-expect-error - electron tag */}
-      <webview ref={webviewRef} src={url} class="hm-view-browser-webframe"></webview>
+      <webview
+        ref={webviewRef}
+        src={url}
+        class="hm-view-browser-webframe"
+        enableblinkfeatures="AutoDarkMode"
+      />
     </div>
   );
 };

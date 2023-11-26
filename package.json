@@ -19,8 +19,8 @@
     "url": "git://github.com/TfTHacker/HelpMate.git"
   },
   "devDependencies": {
-    "@html-eslint/eslint-plugin": "^0.20.0",
-    "@html-eslint/parser": "^0.20.0",
+    "@html-eslint/eslint-plugin": "^0.21.0",
+    "@html-eslint/parser": "^0.21.0",
     "@types/node": "^20.10.0",
     "@types/obsidian-typings": "github:Fevol/obsidian-typings",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
@@ -41,7 +41,7 @@
     "eslint-plugin-tsdoc": "^0.2.17",
     "eslint-plugin-yml": "^1.10.0",
     "husky": "^8.0.3",
-    "jsdom": "^22.1.0",
+    "jsdom": "^23.0.0",
     "lint-staged": "^15.1.0",
     "obsidian": "1.4.11",
     "prettier": "^3.1.0",
