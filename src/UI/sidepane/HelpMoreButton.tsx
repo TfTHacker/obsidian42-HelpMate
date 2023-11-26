@@ -22,7 +22,7 @@ const HelpMoreButton: FunctionComponent<HelpMoreButtonProps> = ({
       },
     },
     {
-      name: 'Codeblock from site',
+      name: 'Code block from site',
       index: 1,
       command: async () => {
         const newFile =
