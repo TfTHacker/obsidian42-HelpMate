@@ -2,6 +2,7 @@ import type { App, ToggleComponent } from 'obsidian';
 import { PluginSettingTab, Setting, TextAreaComponent } from 'obsidian';
 import type HelpMatePlugin from 'src/main';
 import { DEFAULT_SETTINGS } from '../../settings';
+import { addHelpMateResourcesToCommandPalette } from 'src/commands';
 
 export class HelpMateSettingTab extends PluginSettingTab {
   plugin: HelpMatePlugin;
@@ -93,7 +94,7 @@ export class HelpMateSettingTab extends PluginSettingTab {
     containerEl
       .createEl('div', {
         text: `Add custom help resources to be displayed in HelpMate. Input a list of URLs, one per line. 
-											using the following format: "Title | URL". Title is the name of the resources, and URL is the the website. For example: `,
+							 using the following format: "Title | URL". Title is the name of the resources, and URL is the the website. For example: `,
       })
       .addClass('setting-item-description');
 
@@ -108,6 +109,7 @@ export class HelpMateSettingTab extends PluginSettingTab {
     helpUrlList.setPlaceholder('Title | URL');
     helpUrlList.setValue(this.plugin.settings.userResources).onChange(async (value) => {
       this.plugin.settings.userResources = value;
+      addHelpMateResourcesToCommandPalette(this.plugin);
       await this.plugin.saveSettings();
     });
 

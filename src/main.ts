@@ -7,6 +7,7 @@ import { HelpMateView, VIEW_TYPE_HELPMATE } from './UI/sidepane/HelpMateView';
 import { createCodeBlock } from './UI/codeblock';
 import HelpMateAPI from './HelpMateAPI';
 import integrationWithSettings from './UI/settingsTab/integrationWithSettings';
+import { initializeCommands } from './commands';
 
 export default class HelpMatePlugin extends Plugin {
   APP_NAME = this.manifest.name;
@@ -33,11 +34,7 @@ export default class HelpMatePlugin extends Plugin {
 
     if (this.settings.ribbonIconEnabled) this.showRibbonButton();
 
-    this.addCommand({
-      id: 'open-helpmate',
-      name: 'Open sidepane',
-      callback: () => this.activateView(),
-    });
+    initializeCommands(this);
 
     this.registerEvent(
       // based on plugin from https://github.com/pjeby/hotkey-helper
