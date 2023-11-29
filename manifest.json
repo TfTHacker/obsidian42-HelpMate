@@ -1,6 +1,6 @@
 {
-  "id": "obsidian42-helpmate",
-  "name": "Obsidian42 - HelpMate",
+  "id": "helpmate",
+  "name": "HelpMate",
   "version": "1.0.2",
   "minAppVersion": "1.4.16",
   "description": "Integrating Help Systems into the Obsidian UI.",
