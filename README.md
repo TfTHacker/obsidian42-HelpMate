@@ -8,6 +8,6 @@ A plugin that adds a sidepane to Obsidian to view help sites for the plugins and
 
 https://tfthacker.com/HelpMate
 
-# Installation
+# Use of Internet
 
-Use the Obsidian [BRAT](https://obsidian.md/plugins?id=obsidian42-brat) plugin to install this plugin.
+This plugin is an embedded web browser. It will connect to the internet to retrieve the help sites for the plugins and themes you have installed. It will not connect to the internet for any other reason. It requires a live internet connection to function.
