@@ -42,7 +42,7 @@ const HelpMoreButton: FunctionComponent<HelpMoreButtonProps> = ({
       command: () => {
         const settings = plugin.app.setting;
         settings.open();
-        settings.openTabById(plugin.APP_NAME);
+        settings.openTabById(plugin.APP_ID);
       },
     },
   ];

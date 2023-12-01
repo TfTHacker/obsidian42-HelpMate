@@ -7,6 +7,8 @@ import type HelpMateAPI from 'src/HelpMateAPI';
 import { useState, useRef, useEffect } from 'preact/hooks';
 import HelpSourceButton from '../sidepane/HelpSourceButton';
 import HelpMoreButton from '../sidepane/HelpMoreButton';
+import { isValidUrl } from 'src/resources';
+import { Notice } from 'obsidian';
 
 interface WebViewBrowserProps {
   urlAddress: string;
@@ -52,7 +54,12 @@ const WebViewBrowser = ({
 
   const navigateTo = () => {
     debug && api.log('WebViewBrowser: navigateTo', url);
-    webviewRef.current?.loadURL(url);
+    if (!(url.startsWith('http://') || url.startsWith('https://'))) {
+      const newUrl = `https://${url}`;
+      if (isValidUrl(newUrl)) setUrl(newUrl);
+    }
+    if (isValidUrl(url)) webviewRef.current?.loadURL(url);
+    else new Notice('Invalid URL');
   };
 
   const handleKeyPress = (event: KeyboardEvent) => {

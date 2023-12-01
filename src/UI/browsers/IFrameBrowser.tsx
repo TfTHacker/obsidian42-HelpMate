@@ -3,6 +3,8 @@ import type HelpMateAPI from 'src/HelpMateAPI';
 import { useState, useRef } from 'preact/hooks';
 import HelpSourceButton from '../sidepane/HelpSourceButton';
 import HelpMoreButton from '../sidepane/HelpMoreButton';
+import { isValidUrl } from 'src/resources';
+import { Notice } from 'obsidian';
 
 interface IFrameBrowserProps {
   urlAddress: string;
@@ -21,26 +23,32 @@ const IFrameBrowser = ({
   const [inputUrl, setInputUrl] = useState<string>(urlAddress || '');
   const [iframeUrl, setIframeUrl] = useState<string>(urlAddress || '');
 
-  const navigateTo = () => {
-    if (iframeRef.current) {
-      debug && api.log('IFrameBrowser: navigateTo', inputUrl);
-      setIframeUrl(inputUrl);
-      iframeRef.current.src = inputUrl;
+  const updateUrl = (url: string) => {
+    let newUrl = url;
+    if (!(url.startsWith('http://') || url.startsWith('https://'))) {
+      newUrl = `https://${url}`;
+    }
+    if (isValidUrl(newUrl)) {
+      setInputUrl(newUrl);
+      setIframeUrl(newUrl);
     } else {
-      // Handle error when iframeRef.current is null
+      new Notice('Invalid URL');
     }
   };
 
-  const updateUrl = (url: string) => {
-    setInputUrl(url);
-    setIframeUrl(url);
+  const navigateTo = () => {
+    if (iframeRef.current) {
+      debug && api.log('IFrameBrowser: navigateTo', inputUrl);
+      updateUrl(inputUrl);
+    }
   };
 
   const handleKeyPress = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
       const newUrl = (e.target as HTMLInputElement).value;
-      setInputUrl(newUrl);
-      setIframeUrl(newUrl);
+      updateUrl(newUrl);
+      // setInputUrl(newUrl);
+      // setIframeUrl(newUrl);
     }
   };
 
