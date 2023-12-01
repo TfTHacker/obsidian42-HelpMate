@@ -1,6 +1,5 @@
 export interface HelpMateSettings {
   acknowledgedWebUse: boolean;
-  ribbonIconEnabled: boolean;
   includeObsidianHelp: boolean;
   obsidianHelpUrl: string;
   includeObsidianDevHelp: boolean;
@@ -12,7 +11,6 @@ export interface HelpMateSettings {
 
 export const DEFAULT_SETTINGS: HelpMateSettings = {
   acknowledgedWebUse: false,
-  ribbonIconEnabled: true,
   includeObsidianHelp: true,
   obsidianHelpUrl: 'https://help.obsidian.md',
   includeObsidianDevHelp: true,

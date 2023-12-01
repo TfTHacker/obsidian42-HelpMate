@@ -17,20 +17,6 @@ export class HelpMateSettingTab extends PluginSettingTab {
     containerEl.empty();
 
     new Setting(containerEl)
-      .setName(`HelpMate in ribbon`)
-      .setDesc(`Show the HelpMate button in the ribbon.`)
-      .addToggle((cb: ToggleComponent) => {
-        cb.setValue(this.plugin.settings.ribbonIconEnabled);
-        cb.onChange(async (value: boolean) => {
-          this.plugin.settings.ribbonIconEnabled = value;
-          await this.plugin.saveSettings();
-          if (!this.plugin.settings.ribbonIconEnabled) this.plugin.ribbonIcon.remove();
-          else this.plugin.showRibbonButton();
-          await this.plugin.saveSettings();
-        });
-      });
-
-    new Setting(containerEl)
       .setName(`Enable Obsidian's help in HelpMate`)
       .setDesc(`Show Obsidian's native help.`)
       .addToggle((cb: ToggleComponent) => {

@@ -32,7 +32,7 @@ export default class HelpMatePlugin extends Plugin {
       createCodeBlock(this, source, el, ctx);
     });
 
-    if (this.settings.ribbonIconEnabled) this.showRibbonButton();
+    this.showRibbonButton();
 
     initializeCommands(this);
 

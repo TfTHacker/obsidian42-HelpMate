@@ -1,15 +1,14 @@
 {
   "id": "helpmate",
   "name": "HelpMate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "minAppVersion": "1.4.16",
-  "description": "Integrating Help Systems into the Obsidian UI.",
+  "description": "Integrating help systems into the Obsidian UI.",
   "author": "TfTHacker",
-  "authorUrl": "https://github.com/TfTHacker/HelpMate",
+  "authorUrl": "https://github.com/TfTHacker/",
   "helpUrl": "https://tfthacker.com/HelpMate",
   "isDesktopOnly": false,
   "fundingUrl": {
-    "Buy Me a Coffee": "https://bit.ly/o42-kofi",
-    "Vist my site": "https://tfthacker.com"
+    "Support my work": "https://tfthacker.com/sponsor"
   } 
 }
