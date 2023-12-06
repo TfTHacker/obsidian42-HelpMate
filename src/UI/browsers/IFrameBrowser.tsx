@@ -24,15 +24,15 @@ const IFrameBrowser = ({
   const [iframeUrl, setIframeUrl] = useState<string>(urlAddress || '');
 
   const updateUrl = (url: string) => {
-    let newUrl = url;
-    if (!(url.startsWith('http://') || url.startsWith('https://'))) {
+    let newUrl = url.trim();
+    if (!newUrl.startsWith('http://') && !newUrl.startsWith('https://')) {
       newUrl = `https://${url}`;
     }
     if (isValidUrl(newUrl)) {
       setInputUrl(newUrl);
       setIframeUrl(newUrl);
     } else {
-      new Notice('Invalid URL');
+      new Notice('Invalid URL ' + newUrl);
     }
   };
 

@@ -10,17 +10,12 @@ export interface HelpForPlugin {
 }
 
 export const isValidUrl = (url: string): boolean => {
-  // validate protocol, then domain name OR ip (v4) address, then port and path, then query string
-  const urlPattern = new RegExp(
-    '^(https?:\\/\\/)?' +
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
-      '((\\d{1,3}\\.){3}\\d{1,3}))' +
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
-      '(\\?[;&a-z\\d%_.~+=-]*)?' +
-      '(\\#[-a-z\\d_]*)?$',
-    'i'
-  );
-  return !!urlPattern.test(url.trim());
+  try {
+    new URL(url.trim());
+    return true;
+  } catch (error) {
+    return false;
+  }
 };
 
 export const getPluginHelpList = (plugin: HelpMatePlugin): HelpForPlugin[] => {

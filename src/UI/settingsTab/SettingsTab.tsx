@@ -79,8 +79,9 @@ export class HelpMateSettingTab extends PluginSettingTab {
 
     containerEl
       .createEl('div', {
-        text: `Add custom help resources to be displayed in HelpMate. Input a list of URLs, one per line. 
-							 using the following format: "Title | URL". Title is the name of the resources, and URL is the the website. For example: `,
+        text: `Add custom help resources to be displayed in HelpMate. Please note some sites will not
+               work on mobile devices, due to some characteristics of Obsidian Mobile even though they work on Obsidian Desktop.  Input a list of URLs, 
+               one per line using the following format: "Title | URL". Title is the name of the resources, and URL is the the website. For example: `,
       })
       .addClass('setting-item-description');
 

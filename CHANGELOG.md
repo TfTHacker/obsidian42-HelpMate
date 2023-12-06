@@ -1,3 +1,10 @@
+# 1.0.5
+
+## Fixes
+
+- Resolved an issue on mobile devices reporting "Invalid URL" for custom sites defined in settings.
+- Added a notice in settings for custom sites that some sites won't work on Obsidian Mobile, even though they work on Destkop
+
 # 1.0.4
 
 ## New

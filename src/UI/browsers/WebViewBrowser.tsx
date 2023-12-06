@@ -54,12 +54,12 @@ const WebViewBrowser = ({
 
   const navigateTo = () => {
     debug && api.log('WebViewBrowser: navigateTo', url);
-    if (!(url.startsWith('http://') || url.startsWith('https://'))) {
-      const newUrl = `https://${url}`;
+    if (!url.trim().startsWith('http://') && !url.trim().startsWith('https://')) {
+      const newUrl = `https://${url.trim()}`;
       if (isValidUrl(newUrl)) setUrl(newUrl);
     }
-    if (isValidUrl(url)) webviewRef.current?.loadURL(url);
-    else new Notice('Invalid URL');
+    if (isValidUrl(url.trim())) webviewRef.current?.loadURL(url.trim());
+    else new Notice('Invalid URL ' + url);
   };
 
   const handleKeyPress = (event: KeyboardEvent) => {
