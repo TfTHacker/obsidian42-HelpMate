@@ -1,3 +1,9 @@
+# 1.0.6
+
+## Fixes
+
+- chores: update dependencies
+
 # 1.0.5
 
 ## Fixes
