@@ -4,14 +4,12 @@ import builtins from 'builtin-modules';
 import esbuild from 'esbuild';
 import process from 'process';
 
-
 fs.copyFile("manifest.json", "build/manifest.json", (err) => {
 	if (err) console.log(err);
 });
 fs.copyFile("styles.css", "build/styles.css", (err) => {
 	if (err) console.log(err);
 });
-
 
 const prod = process.argv[2] === 'production';
 
@@ -46,15 +44,10 @@ const context = await esbuild.context({
   outfile: 'build/main.js',
 });
 
+
 if (prod) {
-  await context.rebuild();
-  fs.copyFile('manifest.json', 'build/manifest.json', (err) => {
-    if (err) console.log(err);
-  });
-  fs.copyFile('styles.css', 'build/styles.css', (err) => {
-    if (err) console.log(err);
-  });
-  process.exit(0);
+	await context.rebuild();
+	process.exit(0);
 } else {
-  await context.watch();
+	await context.watch();
 }
