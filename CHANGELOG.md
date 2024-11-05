@@ -1,3 +1,10 @@
+# 1.0.7
+
+### Updates
+- Updating plugin to newest Obsidian recommendations https://docs.obsidian.md/oo24/plugin.
+- Transition to Biome from EsLint and Prettier.
+
+
 # 1.0.6
 
 ## Fixes

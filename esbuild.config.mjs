@@ -1,14 +1,24 @@
+import console from 'console';
+import fs from 'fs';
+import builtins from 'builtin-modules';
 import esbuild from 'esbuild';
 import process from 'process';
-import builtins from 'builtin-modules';
-import fs from 'fs';
-import console from 'console';
+
+
+fs.copyFile("manifest.json", "build/manifest.json", (err) => {
+	if (err) console.log(err);
+});
+fs.copyFile("styles.css", "build/styles.css", (err) => {
+	if (err) console.log(err);
+});
+
 
 const prod = process.argv[2] === 'production';
 
 const context = await esbuild.context({
   entryPoints: ['src/main.ts'],
   bundle: true,
+  minify: prod,
   external: [
     'obsidian',
     'electron',

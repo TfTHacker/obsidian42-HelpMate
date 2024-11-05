@@ -1,11 +1,11 @@
-import type HelpMatePlugin from './main';
-import type { HelpMateSettings } from './settings';
-import type { HelpForPlugin } from './resources';
-import { getPluginHelpList } from './resources';
+import type HelpMatePlugin from "./main";
+import type { HelpForPlugin } from "./resources";
+import { getPluginHelpList } from "./resources";
+import type { HelpMateSettings } from "./settings";
 
 export enum BrowserMode {
-  webView = 'WebView',
-  iFrame = 'IFrame',
+	webView = "WebView",
+	iFrame = "IFrame",
 }
 
 /**
@@ -13,27 +13,29 @@ export enum BrowserMode {
  * main.ts will attach this to window.helpMateAPI
  */
 export default class HelpMateAPI {
-  private plugin: HelpMatePlugin;
-  settings: HelpMateSettings;
-  enableDebugging = {
-    webViewBrowser: false,
-    iFrameBrowser: true,
-  };
+	private plugin: HelpMatePlugin;
+	settings: HelpMateSettings;
+	enableDebugging = {
+		webViewBrowser: false,
+		iFrameBrowser: true,
+	};
 
-  constructor(plugin: HelpMatePlugin) {
-    this.plugin = plugin;
-    this.settings = plugin.settings;
-  }
+	constructor(plugin: HelpMatePlugin) {
+		this.plugin = plugin;
+		this.settings = plugin.settings;
+	}
 
-  log = (logDescription: string, ...outputs: unknown[]): void => {
-    console.log('HelpMate: ' + logDescription, outputs);
-  };
+	log = (logDescription: string, ...outputs: unknown[]): void => {
+		console.log(`HelpMate: ${logDescription}`, outputs);
+	};
 
-  activateSidePane = async (url?: string): Promise<void> => {
-    url ? await this.plugin.activateView(url) : await this.plugin.activateView();
-  };
+	activateSidePane = async (url?: string): Promise<void> => {
+		url
+			? await this.plugin.activateView(url)
+			: await this.plugin.activateView();
+	};
 
-  getPluginHelpList = (): HelpForPlugin[] => {
-    return getPluginHelpList(this.plugin);
-  };
+	getPluginHelpList = (): HelpForPlugin[] => {
+		return getPluginHelpList(this.plugin);
+	};
 }
