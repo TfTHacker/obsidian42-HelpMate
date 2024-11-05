@@ -5,6 +5,29 @@ import esbuild from 'esbuild';
 import process from 'process';
 
 
+// Ensure build directory exists
+if (!fs.existsSync("build")) {
+  fs.mkdirSync("build");
+}
+
+// Check and copy files
+if (fs.existsSync("manifest.json")) {
+  fs.copyFile("manifest.json", "build/manifest.json", (err) => {
+    if (err) console.log("Error copying manifest.json:", err);
+  });
+} else {
+  console.log("manifest.json does not exist");
+}
+
+if (fs.existsSync("styles.css")) {
+  fs.copyFile("styles.css", "build/styles.css", (err) => {
+    if (err) console.log("Error copying styles.css:", err);
+  });
+} else {
+  console.log("styles.css does not exist");
+}
+
+
 const prod = process.argv[2] === 'production';
 
 const context = await esbuild.context({
@@ -41,12 +64,6 @@ const context = await esbuild.context({
 
 if (prod) {
 	await context.rebuild();
-  fs.copyFile("manifest.json", "build/manifest.json", (err) => {
-    if (err) console.log(err);
-  });
-  fs.copyFile("styles.css", "build/styles.css", (err) => {
-    if (err) console.log(err);
-  });  
 	process.exit(0);
 } else {
 	await context.watch();
