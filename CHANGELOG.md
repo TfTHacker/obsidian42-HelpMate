@@ -1,3 +1,6 @@
+# 1.0.12
+- Dependency updates
+
 # 1.0.7
 
 ### Updates
