@@ -4,16 +4,27 @@ on:
   push:
     tags:
       - '*'
+  workflow_run:
+    workflows:
+      - Bump version on dependency change
+    types:
+      - completed
+
+permissions:
+  contents: write
 
 jobs:
   build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '21.x'
 
@@ -26,7 +37,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag="${GITHUB_REF#refs/tags/}"
+          if [ "${GITHUB_REF#refs/tags/}" != "${GITHUB_REF}" ]; then
+            tag="${GITHUB_REF#refs/tags/}"
+          else
+            tag="$(node -p "require('./manifest.json').version")"
+          fi
 
           gh release create "$tag" \
             --title="$tag" \
