@@ -7,6 +7,12 @@ on:
     paths:
       - package.json
       - package-lock.json
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run without pushing commits/tags"
+        required: false
+        default: "true"
 
 permissions:
   contents: write
@@ -53,7 +59,7 @@ jobs:
           npm run version
 
       - name: Commit version files
-        if: steps.diff.outputs.skip != 'true'
+        if: steps.diff.outputs.skip != 'true' && github.event.inputs.dry_run != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -62,6 +68,6 @@ jobs:
           git push
 
       - name: Tag release
-        if: steps.diff.outputs.skip != 'true'
+        if: steps.diff.outputs.skip != 'true' && github.event.inputs.dry_run != 'true'
         run: |
           npm run githubaction
