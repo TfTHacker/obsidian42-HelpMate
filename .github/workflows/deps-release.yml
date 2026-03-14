@@ -35,6 +35,11 @@ jobs:
       - name: Detect manual version updates
         id: diff
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           before="${{ github.event.before }}"
           after="${{ github.sha }}"
 
