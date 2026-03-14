@@ -1,0 +1,67 @@
+name: Bump version on dependency change
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - package.json
+      - package-lock.json
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21.x'
+
+      - name: Detect manual version updates
+        id: diff
+        run: |
+          before="${{ github.event.before }}"
+          after="${{ github.sha }}"
+
+          if [ "$before" = "0000000000000000000000000000000000000000" ]; then
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          files=$(git diff --name-only "$before" "$after")
+          echo "$files"
+
+          if echo "$files" | grep -E '^(manifest.json|versions.json)$' >/dev/null; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Bump version + update manifest/versions
+        if: steps.diff.outputs.skip != 'true'
+        run: |
+          npm version patch --no-git-tag-version
+          npm run version
+
+      - name: Commit version files
+        if: steps.diff.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json manifest.json versions.json
+          git commit -m "chore: bump version for deps"
+          git push
+
+      - name: Tag release
+        if: steps.diff.outputs.skip != 'true'
+        run: |
+          npm run githubaction
