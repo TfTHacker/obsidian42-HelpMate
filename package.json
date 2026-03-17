@@ -1,6 +1,6 @@
 {
   "name": "helpmate",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "HelpMate - integrating help into Obsidian",
   "main": "main.js",
   "scripts": {
