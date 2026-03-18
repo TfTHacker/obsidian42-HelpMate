@@ -17,7 +17,7 @@
     "url": "git://github.com/TfTHacker/HelpMate.git"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.7",
+    "@biomejs/biome": "2.4.8",
     "@types/node": "^25.5.0",
     "@types/obsidian-typings": "github:Fevol/obsidian-typings",
     "builtin-modules": "5.0.0",
