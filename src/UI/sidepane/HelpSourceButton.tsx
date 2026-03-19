@@ -66,9 +66,7 @@ const HelpSourceButton: FunctionComponent<HelpSourceButtonProps> = ({
 			{isOpen && (
 				<ul className="hm-source-button-dropdown-menu hm-button-dropdown-menu">
 					{helpUrls.map((url, index) => (
-						// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 						<li
-							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 							key={index}
 							onClick={() => {
 								handleOptionClick(index);

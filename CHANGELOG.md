@@ -1,3 +1,10 @@
+# 1.0.21
+
+## Updates
+
+- Removed Biome from the project.
+- Updated development dependencies, including `@types/node` and `preact`.
+
 # 1.0.12
 - Dependency updates
 

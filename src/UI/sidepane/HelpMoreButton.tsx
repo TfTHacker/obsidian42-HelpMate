@@ -105,7 +105,6 @@ const HelpMoreButton: FunctionComponent<HelpMoreButtonProps> = ({
 			{isOpen && (
 				<ul className="hm-more-button-dropdown-menu hm-button-dropdown-menu">
 					{commands.map((command) => (
-						// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 						<li
 							key={command.index}
 							onClick={() => {
