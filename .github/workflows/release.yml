@@ -50,6 +50,11 @@ jobs:
             tag="$(node -p "require('./manifest.json').version")"
           fi
 
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists"
+            exit 0
+          fi
+
           gh release create "$tag" \
             --title="$tag" \
             build/main.js manifest.json styles.css
