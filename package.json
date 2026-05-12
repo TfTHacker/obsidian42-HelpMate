@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/node": "^25.6.2",
     "@types/obsidian-typings": "github:Fevol/obsidian-typings",
-    "builtin-modules": "5.1.0",
+    "builtin-modules": "5.2.0",
     "esbuild": "0.28.0",
     "obsidian": "1.12.3",
     "ts-node": "^10.9.2",
