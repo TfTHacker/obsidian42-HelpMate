@@ -16,7 +16,7 @@
     "url": "git://github.com/TfTHacker/HelpMate.git"
   },
   "devDependencies": {
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.0.1",
     "@types/obsidian-typings": "github:Fevol/obsidian-typings",
     "builtin-modules": "5.3.0",
     "esbuild": "0.28.1",
